@@ -1,7 +1,7 @@
 import { FlatList, SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect } from 'react'
 import PageHeader from '../components/PageHeader'
-import { PageState, RUPEE_SYMBOL, currValueText, holdingHeaderTitle, todayPNLText, totalInvestedText, totalProfitText } from '../utils/constants'
+import { PNLText, PageState, RUPEE_SYMBOL, currValueText, holdingHeaderTitle, ltpText, todayPNLText, totalInvestedText, totalProfitText } from '../utils/constants'
 import ActivityIndicatorCustomized from '../components/ActivityIndicatorCustomized'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 import HoldingItem from '../components/holding/HoldingItem'
@@ -41,9 +41,16 @@ const StockHoldings = () => {
         makeApiCall()
     }, [])
 
-    const renderItem = ({ item }) => {
+    const renderItem = ({ item } : any) => {
         return (
-            <HoldingItem item={item} />
+            <HoldingItem 
+                firstTitle={item?.symbol}
+                secondTitle={item?.quantity}
+                firstSubtitle={RUPEE_SYMBOL + " " + item?.ltp}
+                secondSubtitle={RUPEE_SYMBOL + " " + item?.pnl}
+                firstSubtitlePrefix={ltpText}
+                secondSubtitlePrefix={PNLText}
+            />
         )
     }
 

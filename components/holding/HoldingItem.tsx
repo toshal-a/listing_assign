@@ -1,33 +1,37 @@
 import { StyleSheet, Text, View } from "react-native"
 import { COLORS, PNLText, RUPEE_SYMBOL, ltpText } from "../../utils/constants";
-
-export interface HoldingItem {
-    symbol: string;
-    ltp: number;
-    quantity: number;
-    pnl: number;
-}
-
 export interface HoldingItemProps {
-    item: HoldingItem;
+    firstTitle: string;
+    secondTitle: string;
+    firstSubtitle: string;
+    secondSubtitle: string;
+    firstSubtitlePrefix: string;
+    secondSubtitlePrefix: string;
 }
 
 
-const HoldingItem = ({ item }: HoldingItemProps) => {
+const HoldingItem = ({ 
+    firstTitle,
+    secondTitle,
+    firstSubtitle,
+    secondSubtitle,
+    firstSubtitlePrefix,
+    secondSubtitlePrefix,
+}: HoldingItemProps) => {
     return (
         <View style={styles.container}>
             <View style={styles.row}>
-                <Text style={styles.symbolStyle}>{item?.symbol}</Text>
+                <Text style={styles.symbolStyle}>{firstTitle}</Text>
                 <Text style={styles.quantity}>
-                    {ltpText}
-                    <Text style={styles.symbolStyle}>{RUPEE_SYMBOL + " " + item?.ltp}</Text>
+                    {firstSubtitlePrefix}
+                    <Text style={styles.symbolStyle}>{firstSubtitle}</Text>
                 </Text>
             </View>
             <View style={styles.row}>
-                <Text style={styles.quantity}>{item?.quantity}</Text>
+                <Text style={styles.quantity}>{secondTitle}</Text>
                 <Text style={styles.quantity}>
-                    {PNLText}
-                    <Text style={styles.symbolStyle}>{RUPEE_SYMBOL + " " + item?.pnl}</Text>
+                    {secondSubtitlePrefix}
+                    <Text style={styles.symbolStyle}>{secondSubtitle}</Text>
                 </Text>
             </View>
             <View style={styles.divider} />
