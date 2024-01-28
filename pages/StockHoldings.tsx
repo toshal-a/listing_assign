@@ -15,6 +15,7 @@ interface Response {
     totalPnl?: number;
     currentValue?: number;
     investmentValue?: number;
+    todayPnl?: number;
 }
 
 const StockHoldings = () => {
@@ -71,7 +72,7 @@ const StockHoldings = () => {
                                             items={[
                                                 { title: currValueText, subTitle: RUPEE_SYMBOL + response?.currentValue },
                                                 { title: totalInvestedText, subTitle: RUPEE_SYMBOL + response?.investmentValue },
-                                                { title: todayPNLText, subTitle: RUPEE_SYMBOL + response?.totalPnl}
+                                                { title: todayPNLText, subTitle: RUPEE_SYMBOL + response?.todayPnl}
                                             ]}
                                         />
                                     )}
